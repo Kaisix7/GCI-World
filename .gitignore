@@ -1,0 +1,49 @@
+# Python cache & compiled files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual Environment
+.venv/
+env/
+venv/
+ENV/
+
+# Jupyter & Notebook Checkpoints
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/*
+
+# macOS system files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+
+# Official Competition Datasets (Protected by Rules)
+input/
+data/*.csv
+data/*.xlsx
+*.csv.gz
+*.zip
+_archive_raw_competition_materials/
+_backup_experiments/
+
+# Preserve template submission instructions in data/
+!data/README.md
+
+# Large Experiment Checkpoints & Intermediate Caches
+catboost_info/
+experiments/
+*.npy
+*.pkl
+*.bin
+*.model
+*.log
+
+# Keep final outputs directory tracked
+!outputs/
+!outputs/submission.csv
+!outputs/cv_results.csv

@@ -1,0 +1,65 @@
+Experiment_ID,File,Pooled_OOF_AUC,Seed,Model,Elapsed_Sec
+optuna_lgb_v2_occup_org_seed31415_summary,experiments/feature_sweeps/optuna_lgb_v2_occup_org_seed31415_summary.json,0.7660162136985718,31415,optuna_lgb_v2_occup_org,126.26
+optuna_tuned_resid_lgb_seed8191_summary,experiments/feature_sweeps/optuna_tuned_resid_lgb_seed8191_summary.json,0.7659685368074663,8191,optuna_tuned_resid_lgb,121.33
+optuna_tuned_resid_lgb_seed99999_summary,experiments/feature_sweeps/optuna_tuned_resid_lgb_seed99999_summary.json,0.7658358226033307,99999,optuna_tuned_resid_lgb,133.69
+optuna_lgb_v2_occup_org_seed99999_summary,experiments/feature_sweeps/optuna_lgb_v2_occup_org_seed99999_summary.json,0.7657792020138543,99999,optuna_lgb_v2_occup_org,114.74
+optuna_tuned_resid_lgb_seed54321_summary,experiments/feature_sweeps/optuna_tuned_resid_lgb_seed54321_summary.json,0.7657160596136914,54321,optuna_tuned_resid_lgb,129.18
+optuna_lgb_v2_occup_org_seed54321_summary,experiments/feature_sweeps/optuna_lgb_v2_occup_org_seed54321_summary.json,0.7656970260958412,54321,optuna_lgb_v2_occup_org,164.04
+nextgen_resid_lgb_seed8191_summary,experiments/feature_sweeps/nextgen_resid_lgb_seed8191_summary.json,0.7656225401769364,N/A,N/A,126.69323391700163
+breakthrough_solvency_lgb_seed31415_summary,experiments/feature_sweeps/breakthrough_solvency_lgb_seed31415_summary.json,0.7655628618852975,N/A,N/A,119.30216274999839
+optuna_lgb_v2_occup_org_seed2026_summary,experiments/feature_sweeps/optuna_lgb_v2_occup_org_seed2026_summary.json,0.7655446949692479,2026,optuna_lgb_v2_occup_org,145.41
+optuna_lgb_v2_occup_org_seed8191_summary,experiments/feature_sweeps/optuna_lgb_v2_occup_org_seed8191_summary.json,0.7655158989637393,8191,optuna_lgb_v2_occup_org,184.72
+optuna_tuned_resid_lgb_seed31415_summary,experiments/feature_sweeps/optuna_tuned_resid_lgb_seed31415_summary.json,0.7654661537217049,31415,optuna_tuned_resid_lgb,114.15
+nextgen_resid_lgb_seed31415_summary,experiments/feature_sweeps/nextgen_resid_lgb_seed31415_summary.json,0.7654183945379085,N/A,N/A,117.01690804200189
+nextgen_super_features_lgb_seed31415_summary,experiments/feature_sweeps/nextgen_super_features_lgb_seed31415_summary.json,0.7653311412987887,N/A,N/A,127.03514745799475
+optuna_tuned_resid_lgb_seed2026_summary,experiments/feature_sweeps/optuna_tuned_resid_lgb_seed2026_summary.json,0.7651117558809338,2026,optuna_tuned_resid_lgb,187.2
+breakthrough_solvency_xgboost_seed31415_summary,experiments/feature_sweeps/breakthrough_solvency_xgboost_seed31415_summary.json,0.7650960113123045,31415,breakthrough_solvency_xgboost,406.73
+xgboost_te_term_depth3_seed8191_summary,experiments/feature_sweeps/xgboost_te_term_depth3_seed8191_summary.json,0.7649929079952117,8191,"XGBoost hist depth3, min_child_weight5, lambda1, alpha0, gamma0; cross-fit target encoding; fold-local K=3 loan-term features",78.65
+resid_lgb_multiseed_seed11111_summary,experiments/feature_sweeps/resid_lgb_multiseed_seed11111_summary.json,0.7649143495075796,11111,N/A,359.06
+catboost_resid_features_seed31415_summary,experiments/feature_sweeps/catboost_resid_features_seed31415_summary.json,0.7647639515696187,31415,catboost_resid_features,469.64
+catboost_resid_features_seed8191_summary,experiments/feature_sweeps/catboost_resid_features_seed8191_summary.json,0.764625677321888,8191,catboost_resid_features,433.21
+catboost_lossguide_term_seed2026_summary,experiments/feature_sweeps/catboost_lossguide_term_seed2026_summary.json,0.7644883740359626,2026,"CatBoost Lossguide, max_leaves=31, depth=8, l2=5, learning_rate=.03",340.59
+xgboost_te_term_mid_seed8191_summary,experiments/feature_sweeps/xgboost_te_term_mid_seed8191_summary.json,0.7644774406014678,8191,"XGBoost hist depth4, min_child_weight10, lambda2, alpha.1, gamma0; cross-fit target encoding; fold-local K=3 loan-term features",71.77
+resid_lgb_multiseed_seed54321_summary,experiments/feature_sweeps/resid_lgb_multiseed_seed54321_summary.json,0.7644476736341539,54321,N/A,309.18
+catboost_ordered_term_seed2026_summary,experiments/feature_sweeps/catboost_ordered_term_seed2026_summary.json,0.7644252854248771,2026,"CatBoost Lossguide, max_leaves=31, depth=6, l2=5, learning_rate=.03",2205.5
+xgboost_resid_features_seed8191_summary,experiments/feature_sweeps/xgboost_resid_features_seed8191_summary.json,0.7644241781514357,8191,xgboost_resid_features,136.44
+catboost_lossguide_term_seed8191_summary,experiments/feature_sweeps/catboost_lossguide_term_seed8191_summary.json,0.7643298318800185,8191,"CatBoost Lossguide, max_leaves=31, depth=8, l2=5, learning_rate=.03",460.57
+catboost_resid_features_seed2026_summary,experiments/feature_sweeps/catboost_resid_features_seed2026_summary.json,0.764321063800686,2026,catboost_resid_features,410.86
+xgboost_te_term_depth3_seed31415_summary,experiments/feature_sweeps/xgboost_te_term_depth3_seed31415_summary.json,0.7643141408705987,31415,"XGBoost hist depth3, min_child_weight5, lambda1, alpha0, gamma0; cross-fit target encoding; fold-local K=3 loan-term features",74.02
+xgboost_te_term_mid_seed31415_summary,experiments/feature_sweeps/xgboost_te_term_mid_seed31415_summary.json,0.7642825278345684,31415,"XGBoost hist depth4, min_child_weight10, lambda2, alpha.1, gamma0; cross-fit target encoding; fold-local K=3 loan-term features",81.09
+xgboost_resid_features_seed31415_summary,experiments/feature_sweeps/xgboost_resid_features_seed31415_summary.json,0.7642805799343936,31415,xgboost_resid_features,137.94
+breakthrough_solvency_catboost_seed31415_summary,experiments/feature_sweeps/breakthrough_solvency_catboost_seed31415_summary.json,0.7642788039753718,31415,breakthrough_solvency_catboost,688.28
+resid_lgb_multiseed_seed7777_summary,experiments/feature_sweeps/resid_lgb_multiseed_seed7777_summary.json,0.7642234499577579,7777,N/A,238.54
+xgboost_resid_features_seed2026_summary,experiments/feature_sweeps/xgboost_resid_features_seed2026_summary.json,0.764073937930497,2026,xgboost_resid_features,148.41
+catboost_lossguide_term_seed31415_summary,experiments/feature_sweeps/catboost_lossguide_term_seed31415_summary.json,0.7639394583412609,31415,"CatBoost Lossguide, max_leaves=31, depth=8, l2=5, learning_rate=.03",453.6
+resid_lgb_multiseed_seed314159_summary,experiments/feature_sweeps/resid_lgb_multiseed_seed314159_summary.json,0.7639067440083535,314159,N/A,331.94
+resid_lgb_multiseed_seed99999_summary,experiments/feature_sweeps/resid_lgb_multiseed_seed99999_summary.json,0.7638799299234614,99999,N/A,442.44
+xgboost_te_term_depth3_seed2026_summary,experiments/feature_sweeps/xgboost_te_term_depth3_seed2026_summary.json,0.7638245405061982,2026,"XGBoost hist depth3, min_child_weight5, lambda1, alpha0, gamma0; cross-fit target encoding; fold-local K=3 loan-term features",67.26
+xgboost_te_term_flexible_seed31415_summary,experiments/feature_sweeps/xgboost_te_term_flexible_seed31415_summary.json,0.7637773847255122,31415,"XGBoost hist depth5, min_child_weight8, lambda2, alpha.1, gamma.05; cross-fit target encoding; fold-local K=3 loan-term features",46.83
+catboost_ordered_term_seed31415_summary,experiments/feature_sweeps/catboost_ordered_term_seed31415_summary.json,0.7637662207335625,31415,"CatBoost Ordered, depth=6, l2=3, lr=0.03, subsample=0.8 + loan-term GMM features",1577.82
+xgboost_te_term_flexible_seed8191_summary,experiments/feature_sweeps/xgboost_te_term_flexible_seed8191_summary.json,0.7636504277915884,8191,"XGBoost hist depth5, min_child_weight8, lambda2, alpha.1, gamma.05; cross-fit target encoding; fold-local K=3 loan-term features",54.51
+xgboost_te_term_mid_seed2026_summary,experiments/feature_sweeps/xgboost_te_term_mid_seed2026_summary.json,0.7635554585782933,2026,"XGBoost hist depth4, min_child_weight10, lambda2, alpha.1, gamma0; cross-fit target encoding; fold-local K=3 loan-term features",56.9
+xgboost_te_term_seed2026_summary,experiments/feature_sweeps/xgboost_te_term_seed2026_summary.json,0.7633969325130988,2026,"XGBoost hist depth4, min_child_weight25, lambda5; cross-fit target encoding; fold-local K=3 loan-term features",71.49
+loan_term_gmm_k4_seed2026_summary,experiments/feature_sweeps/loan_term_gmm_k4_seed2026_summary.json,0.7632139977002116,2026,N/A,50.3
+xgboost_te_term_flexible_seed2026_summary,experiments/feature_sweeps/xgboost_te_term_flexible_seed2026_summary.json,0.7630866895282106,2026,"XGBoost hist depth5, min_child_weight8, lambda2, alpha.1, gamma.05; cross-fit target encoding; fold-local K=3 loan-term features",47.01
+xgboost_te_term_depth2_seed2026_summary,experiments/feature_sweeps/xgboost_te_term_depth2_seed2026_summary.json,0.7630855606471912,2026,"XGBoost hist depth2, min_child_weight3, lambda1, alpha0, gamma0; cross-fit target encoding; fold-local K=3 loan-term features",100.08
+loan_term_gmm_k5_seed2026_summary,experiments/feature_sweeps/loan_term_gmm_k5_seed2026_summary.json,0.7627388842974241,2026,N/A,49.01
+cb_lgbm_supervised_ext_imputation_blend_seed31415_summary,experiments/cb_lgbm_supervised_ext_imputation_blend_seed31415_summary.json,0.7624980526687483,31415,N/A,640.08
+lgbm_large_l127_lr002_seed2026_summary,experiments/feature_sweeps/lgbm_large_l127_lr002_seed2026_summary.json,0.7622896282695302,2026,"LightGBM num_leaves=127, lr=0.02, min_child=50, ff=0.7, bf=0.8, l1=0.1, l2=5 + all-3 EXT residuals + term-segment features",318.71
+loan_term_gmm_k2_seed2026_summary,experiments/feature_sweeps/loan_term_gmm_k2_seed2026_summary.json,0.7621921569446699,2026,N/A,45.92
+lgbm_te_supervised_ext_imputation_seed42_summary,experiments/lgbm_te_supervised_ext_imputation_seed42_summary.json,0.7617522156218597,42,N/A,34.24
+arch_xgb_subsampled_d4_seed2026_summary,experiments/feature_sweeps/arch_xgb_subsampled_d4_seed2026_summary.json,0.7615949262457067,2026,xgb_subsampled_d4,38.35
+lgbm_te_supervised_ext_imputation_seed31415_summary,experiments/lgbm_te_supervised_ext_imputation_seed31415_summary.json,0.7614461635876422,31415,N/A,35.78
+lgbm_te_supervised_ext_imputation_seed2026_summary,experiments/lgbm_te_supervised_ext_imputation_seed2026_summary.json,0.761140292689292,2026,N/A,61.42
+arch_cb_shallow_d4_seed2026_summary,experiments/feature_sweeps/arch_cb_shallow_d4_seed2026_summary.json,0.7603873127287817,2026,cb_shallow_d4,95.09
+arch_lgb_goss_seed2026_summary,experiments/feature_sweeps/arch_lgb_goss_seed2026_summary.json,0.7601032815750144,2026,lgb_goss,27.08
+arch_lgb_deep_leaves_seed2026_summary,experiments/feature_sweeps/arch_lgb_deep_leaves_seed2026_summary.json,0.7600016643535824,2026,lgb_deep_leaves,32.14
+optuna_lgb_best_params,experiments/feature_sweeps/optuna_lgb_best_params.json,0.7599552563330179,N/A,N/A,N/A
+lgb_dart_resid_features_seed2026_summary,experiments/feature_sweeps/lgb_dart_resid_features_seed2026_summary.json,0.7596557495560077,2026,lgb_dart_resid_features,358.78
+local_peer_features_seed2026_summary,experiments/feature_sweeps/local_peer_features_seed2026_summary.json,0.7594967646745813,2026,N/A,225.3
+arch_cb_deep_d7_seed2026_summary,experiments/feature_sweeps/arch_cb_deep_d7_seed2026_summary.json,0.7594341330407848,2026,cb_deep_d7,75.68
+arch_lgb_dart_seed2026_summary,experiments/feature_sweeps/arch_lgb_dart_seed2026_summary.json,0.7573083735353932,2026,lgb_dart,116.77
+arch_hist_gbdt_seed2026_summary,experiments/feature_sweeps/arch_hist_gbdt_seed2026_summary.json,0.7571154753303453,2026,hist_gbdt,62.7
+woe_logistic_term_seed2026_summary,experiments/feature_sweeps/woe_logistic_term_seed2026_summary.json,0.749582865820626,2026,LogisticRegression C=.3 on 20-quantile-bin and categorical smoothed WOE features plus loan-term features,31.96
+arch_mlp_neural_net_seed2026_summary,experiments/feature_sweeps/arch_mlp_neural_net_seed2026_summary.json,0.7398154782989965,2026,mlp_neural_net,39.68
+arch_scaled_logistic_l2_seed2026_summary,experiments/feature_sweeps/arch_scaled_logistic_l2_seed2026_summary.json,0.7358524806805944,2026,scaled_logistic_l2,8.93
