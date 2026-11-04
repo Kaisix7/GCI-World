@@ -5,20 +5,25 @@
 
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://www.python.org/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Frameworks](https://img.shields.io/badge/Models-LightGBM%20%7C%20CatBoost%20%7C%20XGBoost-orange.svg)](#model-architecture)
-[![Evaluation](https://img.shields.io/badge/Evaluation-ROC--AUC-purple.svg)](#validation-strategy--results)
-[![Status](https://img.shields.io/badge/Competition-GCI%20World%202026-gold.svg)](https://global.omnicamp.us/)
+[![Competition Status](https://img.shields.io/badge/Competition-GCI%20Global%202026%20(Concluded)-lightgrey.svg)](#-competition-overview--context)
+[![Frameworks](https://img.shields.io/badge/Models-LightGBM%20%7C%20CatBoost%20%7C%20XGBoost-orange.svg)](#-model-architecture--methodology)
+[![Evaluation](https://img.shields.io/badge/Evaluation-ROC--AUC-purple.svg)](#-validation-strategy--results)
 
 </div>
 
 ---
 
+<<<<<<< HEAD
 ##  Executive Summary
+=======
+## 📌 Competition Overview & Context
+>>>>>>> 4c688de (chore: complete repository cleanup and finalize documentation for publication)
 
-This repository presents the end-to-end machine learning solution for the **GCI Global 2026 In-class Machine Learning Competition: Home Credit Default Risk**. 
+This repository contains the complete, verified, and reproducible machine learning solution and benchmark codebase developed for the **GCI Global 2026 Home Credit Default Risk Competition** (now concluded).
 
-Predicting customer credit default on uncollateralized cash loans is a fundamental challenge in financial risk analytics, characterized by extreme class imbalance (~8% default rate), non-linear borrower interactions, and substantial missingness across external bureau scores. 
+The competition challenged participants to predict loan default probabilities using real-world tabular financial, demographic, and external credit agency data adapted from the landmark Kaggle Home Credit Default Risk tournament. The repository is maintained as an open-source technical reference for high-performance tabular credit risk modeling, rigorous leakage-free feature engineering, and multi-family gradient boosting ensembling.
 
+<<<<<<< HEAD
 Our solution establishes a leak-free pipeline incorporating:
 1. **Domain-Engineered Financial Health & Solvency Features**: Uncovered credit ratios, net family disposable cushions, and harmonic external agency aggregations.
 2. **Unsupervised Gaussian Mixture Loan Term Segmentation**: Continuous log-term cluster assignments capturing differing repayment dynamics.
@@ -26,27 +31,36 @@ Our solution establishes a leak-free pipeline incorporating:
 4. **Rank-Weighted Power Calibration ($p=3.5$)**: Resolving inter-model probability calibration disparities to optimize rank discrimination.
 
 ###  Verified Benchmark Performance
+=======
+### 🌟 Verified Benchmark Results
+>>>>>>> 4c688de (chore: complete repository cleanup and finalize documentation for publication)
 - **Tri-Family Pooled Out-of-Fold (OOF) ROC-AUC:** `0.76805`
-- **Omnicampus Public Leaderboard Verified Record:** `0.77148`
+- **Public Leaderboard Verified Record:** `0.77148`
 
 ---
 
+<<<<<<< HEAD
 ##  Exploratory Data Analysis & Key Findings
+=======
+## 🔍 Problem Formulation & Exploratory Findings
+
+Predicting loan default on uncollateralized credit applications presents acute machine learning challenges: extreme class imbalance (~8% default rate), complex non-linear borrower interactions, and substantial missingness across external bureau records.
+>>>>>>> 4c688de (chore: complete repository cleanup and finalize documentation for publication)
 
 <div align="center">
   <img src="images/eda/target_distribution.png" width="45%" alt="Target Distribution" />
   <img src="images/eda/ext_sources_density.png" width="49%" alt="EXT_SOURCE Density" />
 </div>
 
-- **Target Imbalance**: 157,370 negative samples (91.9%) vs 13,832 default samples (8.1%). Models must focus on threshold-invariant rank ordering rather than pure classification accuracy.
-- **External Risk Scores (`EXT_SOURCE_1, 2, 3`)**: As depicted above, these three normalized scores exhibit the highest individual correlation with borrower default risk, but feature significant missingness (69.5% missing in `EXT_1`, 31.9% in `EXT_3`).
-- **The Missingness Bottleneck**: A crucial failure analysis revealed that 22.5% of applicants lack both `EXT_1` and `EXT_3`. On this subset, standard default risk rises to 9.08%, necessitating non-linear solvency interactions (`DTI_OVER_EXT2_SQ`) to compensate for missing agency bureau signals.
+- **Target Imbalance**: 157,370 negative applications (91.9%) vs 13,832 default applications (8.1%). Models must optimize threshold-invariant rank discrimination rather than standard accuracy.
+- **External Risk Bureau Signals (`EXT_SOURCE_1, 2, 3`)**: As illustrated above, these three normalized agency scores exhibit the highest individual correlation with borrower default risk, yet suffer from substantial missingness (69.5% missing in `EXT_1`, 31.9% in `EXT_3`).
+- **The Missingness Bottleneck**: Error analysis showed that 22.5% of applicants lack both `EXT_1` and `EXT_3`. On this specific segment, default risk increases to 9.08%, necessitating non-linear solvency interaction terms (`DTI_OVER_EXT2_SQ`) to substitute for absent bureau signals.
 
 ---
 
 ## 🛠️ Feature Engineering Architecture
 
-Feature engineering is organized across five distinct financial and demographic dimensions:
+Feature engineering is structured across five core financial and demographic domains:
 
 | Feature Category | Formula / Definition | Rationale & Predictive Value |
 | :--- | :--- | :--- |
@@ -88,19 +102,22 @@ Feature engineering is organized across five distinct financial and demographic 
 ```
 
 1. **LightGBM (Leaf-wise GBDT)**:
-   - Tuned via Bayesian Optimization with Optuna: `num_leaves=62`, `max_depth=4`, `learning_rate=0.025`, `colsample_bytree=0.69`, `subsample=0.81`, $L_1=2.36$, $L_2=2.32$.
-   - Excels at capturing high-order non-linear feature splits.
+   - Tuned via Bayesian Optimization: `num_leaves=62`, `max_depth=4`, `learning_rate=0.025`, `colsample_bytree=0.69`, `subsample=0.81`, $L_1=2.36$, $L_2=2.32$.
+   - Captures high-order asymmetric feature interactions efficiently.
 2. **CatBoost (Symmetric Oblivious Trees)**:
-   - Configured with native categorical support and Lossguide growth.
-   - Provides exceptional regularization on noisy high-cardinality features (`OCCUPATION_TYPE`, `ORGANIZATION_TYPE`).
+   - Configured with native categorical support and regularized tree depth ($6$).
+   - Robust against overfitting on high-cardinality demographic features (`OCCUPATION_TYPE`, `ORGANIZATION_TYPE`).
 3. **XGBoost (Histogram Splitting)**:
-   - Fast histogram binning (`tree_method='hist'`) with shallow depth (`max_depth=4`) to provide orthogonal gradient paths.
+   - Fast histogram binning (`tree_method='hist'`) with shallow depth (`max_depth=4`) providing orthogonal gradient paths.
+4. **Rank-Weighted Power Calibration ($p=3.5$)**:
+   - Resolves probability calibration discrepancies between model families by mapping out-of-fold and test predictions to uniform rank percentiles prior to exponential combination:
+     $$\text{Ensemble Pred} = 0.60 \cdot \text{Rank}(\hat{y}_{\text{LGB}})^{3.5} + 0.35 \cdot \text{Rank}(\hat{y}_{\text{CB}})^{3.5} + 0.05 \cdot \text{Rank}(\hat{y}_{\text{XGB}})^{3.5}$$
 
 ---
 
 ##  Validation Strategy & Results
 
-Validation is conducted strictly through **5-Fold Stratified Cross-Validation (`StratifiedKFold(n_splits=5, shuffle=True)`)**. All transformations and early-stopping decisions are executed within training partitions to eliminate target and feature leakage.
+Validation was conducted strictly through **5-Fold Stratified Cross-Validation (`StratifiedKFold(n_splits=5, shuffle=True)`)**. All transformations, cluster boundaries, and early stopping decisions were executed strictly within training partitions to eliminate target and feature leakage.
 
 <div align="center">
   <img src="images/roc_curve.png" width="47%" alt="ROC Curves" />
@@ -117,7 +134,7 @@ Validation is conducted strictly through **5-Fold Stratified Cross-Validation (`
 | **5-Seed LightGBM Blend** | Multi-seed average (5 seeds) | 0.7602 | 0.7618 | 0.7785 | 0.7694 | 0.7662 | **0.76754** |
 | **Tri-Family Power Rank Ensemble** | $0.60\,\text{LGB}^{3.5} + 0.35\,\text{CB}^{3.5} + 0.05\,\text{XGB}^{3.5}$ | **0.7608** | **0.7624** | **0.7792** | **0.7699** | **0.7668** | **`0.76805`** |
 
-> **Leaderboard Note**: Deploying the Tri-Family calibrated ensemble to the Omnicampus Public Test set achieved a verified public leaderboard score of **0.77148 ROC-AUC**.
+> **Historical Leaderboard Record**: During official tournament evaluation, this Tri-Family calibrated ensemble achieved a verified public leaderboard score of **0.77148 ROC-AUC**.
 
 ---
 
@@ -127,12 +144,11 @@ Validation is conducted strictly through **5-Fold Stratified Cross-Validation (`
 GCI-World-2026/
 ├── README.md                          # Comprehensive project overview & documentation
 ├── requirements.txt                   # Production environment dependencies
+├── LICENSE                            # MIT License
 ├── .gitignore                         # Data protection & build exclusions
-├── tutorial.ipynb                     # Submission tutorial notebook (Honors requirement)
-├── tutorial.zip                       # Compressed notebook archive for evaluation
+├── HomeCredit_columns_description.xlsx# Column definitions
 ├── notebooks/
-│   ├── final_solution.ipynb           # Complete executable end-to-end notebook
-│   └── tutorial_original_backup.ipynb # Original competition starting tutorial
+│   └── final_solution.ipynb           # Complete executable end-to-end notebook
 ├── src/
 │   ├── feature_engineering.py         # Leak-free feature transformation module
 │   ├── train.py                       # 5-fold CV training pipeline for LGB/CB/XGB
@@ -143,7 +159,7 @@ GCI-World-2026/
 │   ├── submission.csv                 # Final verified submission file (61,500 rows)
 │   └── cv_results.csv                 # Systematic experiment tracking log (64 runs)
 ├── images/
-│   ├── feature_importance.png         # Publication-grade top-20 feature importance plot
+│   ├── feature_importance.png         # Top-20 feature importance plot
 │   ├── roc_curve.png                  # Multi-model ROC comparison plot
 │   └── eda/
 │       ├── target_distribution.png    # Class balance visualization
@@ -161,62 +177,57 @@ GCI-World-2026/
 Clone this repository and create a Python 3.10+ virtual environment:
 
 ```bash
-git clone https://github.com/your-username/GCI-World-2026.git
-cd GCI-World-2026
+git clone https://github.com/Kaisix7/GCI-World.git
+cd GCI-World
 
-# Create and activate virtual environment
 python3 -m venv .venv
 source .venv/bin/activate  # On Windows: .venv\Scripts\activate
 
-# Install required packages
 pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
 ### 2. Dataset Setup
-In compliance with competition rules, raw data is not hosted on GitHub.
-1. Download `train.csv`, `test.csv`, and `HomeCredit_columns_description.xlsx` from [Omnicampus](https://global.omnicamp.us/).
-2. Place the files in `data/` or `input/` as described in [`data/README.md`](data/README.md).
+In compliance with competition rules and academic integrity, raw competition datasets are not redistributed in version control:
+1. Place official `train.csv` and `test.csv` in `data/` or `input/` as outlined in [`data/README.md`](data/README.md).
+2. Verify that column structure aligns with `HomeCredit_columns_description.xlsx`.
 
-### 3. Training & Generating Predictions
-Run the 5-fold cross-validation pipeline across all three model architectures:
+### 3. Pipeline Execution
+Run the complete 5-fold cross-validation pipeline across all three model architectures:
 
 ```bash
-# Execute end-to-end training and inference
 python src/train.py --data-dir input --output-dir outputs --seed 42
 ```
 
-Alternatively, open and run the complete Jupyter Notebook:
+To run inference and generate the final calibrated ensemble prediction:
+
+```bash
+python src/predict.py --data-dir input --output-dir outputs
+```
+
+Alternatively, launch the complete interactive Jupyter Notebook:
 ```bash
 jupyter notebook notebooks/final_solution.ipynb
 ```
 
 ---
 
+<<<<<<< HEAD
 ## Competition Rules & Ethical Compliance
+=======
+## 📜 Competition Rules & Integrity Standards
+>>>>>>> 4c688de (chore: complete repository cleanup and finalize documentation for publication)
 
-This project strictly adheres to the **GCI Global 2026 Official Tournament Regulations**:
-- **Zero External Data**: Built exclusively using official `train.csv` and `test.csv`.
-- **Zero Hand-Labeling**: All test predictions are 100% algorithmically generated.
-- **Strict Leakage Prevention**: Encodings and statistical scaling are strictly partitioned within CV folds.
-- **Attribution**: References and tutorial benchmarks from the course materials are duly cited below.
+This project was developed strictly under the official tournament regulations:
+- **Zero External Data**: Built exclusively on the official competition training and test sets.
+- **Zero Hand-Labeling**: All 61,500 test predictions were 100% algorithmically generated.
+- **Strict Leakage Prevention**: All transformations, scalers, and clusterings were fitted strictly on training fold splits.
 
-For complete regulatory details, consult [`docs/competition_rules.md`](docs/competition_rules.md).
+For complete historical regulatory specifications, see [`docs/competition_rules.md`](docs/competition_rules.md). Detailed mathematical formulations are documented in [`docs/methodology.md`](docs/methodology.md).
 
 ---
 
 ##  Acknowledgements & References
 
-1. **Home Credit Group & Kaggle**: Original 2018 Home Credit Default Risk benchmark dataset [[Kaggle Link](https://www.kaggle.com/c/home-credit-default-risk)].
-2. **GCI Global 2026 Course Staff & TAs**: Office hours, tutorials, and materials:
-   - *Tutorial 01: Adding Features* (Handling anomalies & basic financial ratios)
-   - *Tutorial 02: Advanced Feature Engineering* (Domain interactions & group aggregations)
-   - *Tutorial 03: Hyperparameter Tuning* (Optuna Bayesian Optimization frameworks)
-   - *Tutorial 04: Model Ensembling* (Blending paradigms & diversity optimization)
-3. **Open-Source Libraries**: [LightGBM](https://github.com/microsoft/LightGBM), [CatBoost](https://github.com/catboost/catboost), [XGBoost](https://github.com/dmlc/xgboost), [Scikit-Learn](https://scikit-learn.org/).
-
----
-
-<div align="center">
-  <b>Developed for GCI Global 2026 • Honors Submission Ready</b>
-</div>
+1. **Home Credit Group & Kaggle**: Home Credit Default Risk benchmark dataset [[Kaggle Link](https://www.kaggle.com/c/home-credit-default-risk)].
+2. **Open-Source Machine Learning Libraries**: [LightGBM](https://github.com/microsoft/LightGBM), [CatBoost](https://github.com/catboost/catboost), [XGBoost](https://github.com/dmlc/xgboost), and [Scikit-Learn](https://scikit-learn.org/).

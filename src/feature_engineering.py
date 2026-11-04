@@ -4,7 +4,7 @@ Constructs domain financial ratios, lifetime & demographic metrics,
 EXT_SOURCE interactions, and Gaussian Mixture Loan Term Clusters.
 """
 
-from typing import Tuple, List, Optional
+from typing import Tuple, List
 import numpy as np
 import pandas as pd
 from sklearn.mixture import GaussianMixture
@@ -25,11 +25,9 @@ def engineer_features(
     """
     full_df = pd.concat([train_df, test_df], axis=0, ignore_index=True)
     
-    # 1. Clean anomalous values
     full_df["DAYS_EMPLOYED_CLEAN"] = full_df["DAYS_EMPLOYED"].replace(365243, np.nan)
     full_df["IS_PENSIONER"] = (full_df["DAYS_EMPLOYED"] == 365243).astype("int8")
     
-    # 2. Financial ratios
     full_df["CREDIT_TO_INCOME"] = full_df["AMT_CREDIT"] / (full_df["AMT_INCOME_TOTAL"] + 1e-5)
     full_df["ANNUITY_TO_INCOME"] = full_df["AMT_ANNUITY"] / (full_df["AMT_INCOME_TOTAL"] + 1e-5)
     full_df["CREDIT_TERM"] = full_df["AMT_CREDIT"] / (full_df["AMT_ANNUITY"] + 1e-5)
@@ -43,7 +41,6 @@ def engineer_features(
     full_df["NET_INCOME_SURPLUS"] = np.maximum(0, full_df["AMT_INCOME_TOTAL"] - full_df["AMT_ANNUITY"])
     full_df["SURPLUS_PER_FAMILY"] = full_df["NET_INCOME_SURPLUS"] / (1 + full_df["CNT_FAM_MEMBERS"].fillna(1))
     
-    # 3. Demographic & normalized lifetime years
     full_df["AGE_YEARS"] = full_df["DAYS_BIRTH"] / -365.25
     full_df["EMPLOYED_YEARS"] = full_df["DAYS_EMPLOYED_CLEAN"] / -365.25
     full_df["EMPLOYED_TO_AGE"] = full_df["EMPLOYED_YEARS"] / (full_df["AGE_YEARS"] + 1e-5)
@@ -56,7 +53,6 @@ def engineer_features(
     full_df["PHONE_TO_AGE"] = full_df["PHONE_CHANGE_YEARS"] / (full_df["AGE_YEARS"] + 1e-5)
     full_df["CAR_AGE_TO_EMP_YEARS"] = full_df["OWN_CAR_AGE"] / (full_df["EMPLOYED_YEARS"] + 1e-5)
     
-    # 4. EXT_SOURCE aggregates & non-linear combinations
     ext_cols = ["EXT_SOURCE_1", "EXT_SOURCE_2", "EXT_SOURCE_3"]
     full_df["EXT_MEAN"] = full_df[ext_cols].mean(axis=1)
     full_df["EXT_STD"] = full_df[ext_cols].std(axis=1)
@@ -78,13 +74,11 @@ def engineer_features(
     full_df["AGE_X_EXT_MEAN"] = full_df["AGE_YEARS"] * full_df["EXT_MEAN"].fillna(0.45)
     full_df["SOLVENCY_CUSHION"] = full_df["NET_INCOME_SURPLUS"] * full_df["EXT_HARM"]
     
-    # 5. Loan Term Clustering via Gaussian Mixture (GMM)
     term_valid = full_df[["CREDIT_TERM"]].dropna()
     gmm = GaussianMixture(n_components=3, random_state=gmm_random_state)
     gmm.fit(term_valid)
     full_df["LOAN_TERM_CLUSTER"] = gmm.predict(full_df[["CREDIT_TERM"]].fillna(term_valid.median()))
     
-    # 6. Categorical encoding setup
     raw_cats = full_df.select_dtypes(include=["object", "category"]).columns.tolist()
     categorical_cols = [c for c in raw_cats if c not in ["SK_ID_CURR", "TARGET"]]
     for col in categorical_cols:

@@ -18,7 +18,10 @@ import lightgbm as lgb
 import xgboost as xgb
 from catboost import CatBoostClassifier
 
-from feature_engineering import engineer_features
+try:
+    from .feature_engineering import engineer_features
+except ImportError:
+    from feature_engineering import engineer_features
 
 def to_power_rank(preds: np.ndarray, p: float = 3.5) -> np.ndarray:
     """Apply power rank transformation to align probability distributions."""
@@ -46,7 +49,6 @@ def train_cv(
     
     skf = StratifiedKFold(n_splits=n_splits, shuffle=True, random_state=seed)
     
-    # Prediction storage
     lgb_oof = np.zeros(len(train_df))
     lgb_test = np.zeros(len(test_df))
     
@@ -56,7 +58,6 @@ def train_cv(
     xgb_oof = np.zeros(len(train_df))
     xgb_test = np.zeros(len(test_df))
     
-    # Pre-format categoricals for CatBoost & XGBoost
     X_cat = X.copy()
     X_test_cat = X_test.copy()
     for col in cat_cols:
@@ -71,7 +72,6 @@ def train_cv(
         X_tr, y_tr = X.iloc[trn_idx], y.iloc[trn_idx]
         X_va, y_va = X.iloc[val_idx], y.iloc[val_idx]
         
-        # 1. LightGBM
         model_lgb = lgb.LGBMClassifier(
             n_estimators=1500,
             learning_rate=0.025,
@@ -91,7 +91,6 @@ def train_cv(
         lgb_test += model_lgb.predict_proba(X_test)[:, 1] / n_splits
         print(f"  Fold {fold} LightGBM AUC: {roc_auc_score(y_va, lgb_oof[val_idx]):.5f}")
         
-        # 2. CatBoost
         model_cat = CatBoostClassifier(
             iterations=1200,
             learning_rate=0.035,
@@ -108,7 +107,6 @@ def train_cv(
         cat_test += model_cat.predict_proba(X_test_cat)[:, 1] / n_splits
         print(f"  Fold {fold} CatBoost AUC: {roc_auc_score(y_va, cat_oof[val_idx]):.5f}")
         
-        # 3. XGBoost
         model_xgb = xgb.XGBClassifier(
             n_estimators=1200,
             learning_rate=0.03,
@@ -132,7 +130,6 @@ def train_cv(
     elapsed = time.perf_counter() - start_time
     print(f"\nTraining completed in {elapsed:.1f}s")
     
-    # Individual Pooled OOF
     auc_lgb = roc_auc_score(y, lgb_oof)
     auc_cat = roc_auc_score(y, cat_oof)
     auc_xgb = roc_auc_score(y, xgb_oof)
@@ -144,7 +141,6 @@ def train_cv(
     print(f"CatBoost OOF ROC-AUC: {auc_cat:.5f}")
     print(f"XGBoost  OOF ROC-AUC: {auc_xgb:.5f}")
     
-    # Power Rank Blend
     r_lgb_oof = to_power_rank(lgb_oof, p=3.5)
     r_cat_oof = to_power_rank(cat_oof, p=3.5)
     r_xgb_oof = to_power_rank(xgb_oof, p=3.5)
@@ -153,7 +149,6 @@ def train_cv(
     blend_auc = roc_auc_score(y, oof_blend)
     print(f"\nTri-Family Power Rank Ensemble OOF ROC-AUC: {blend_auc:.5f}")
     
-    # Generate test predictions
     test_lgb_p = to_power_rank(lgb_test, p=3.5)
     test_cat_p = to_power_rank(cat_test, p=3.5)
     test_xgb_p = to_power_rank(xgb_test, p=3.5)
@@ -161,7 +156,6 @@ def train_cv(
     final_test = 0.55 * test_lgb_p + 0.35 * test_cat_p + 0.10 * test_xgb_p
     final_test = (final_test - final_test.min()) / (final_test.max() - final_test.min())
     
-    # Save output
     output_dir.mkdir(parents=True, exist_ok=True)
     sub = pd.DataFrame({"SK_ID_CURR": test_raw["SK_ID_CURR"], "TARGET": final_test})
     sub_path = output_dir / "submission_reproduced.csv"
