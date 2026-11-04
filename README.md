@@ -16,8 +16,7 @@
 <<<<<<< HEAD
 ##  Executive Summary
 =======
-## 📌 Competition Overview & Context
->>>>>>> 4c688de (chore: complete repository cleanup and finalize documentation for publication)
+## Competition Overview & Context
 
 This repository contains the complete, verified, and reproducible machine learning solution and benchmark codebase developed for the **GCI Global 2026 Home Credit Default Risk Competition** (now concluded).
 
@@ -32,8 +31,8 @@ Our solution establishes a leak-free pipeline incorporating:
 
 ###  Verified Benchmark Performance
 =======
-### 🌟 Verified Benchmark Results
->>>>>>> 4c688de (chore: complete repository cleanup and finalize documentation for publication)
+###  Verified Benchmark Results
+
 - **Tri-Family Pooled Out-of-Fold (OOF) ROC-AUC:** `0.76805`
 - **Public Leaderboard Verified Record:** `0.77148`
 
@@ -42,10 +41,10 @@ Our solution establishes a leak-free pipeline incorporating:
 <<<<<<< HEAD
 ##  Exploratory Data Analysis & Key Findings
 =======
-## 🔍 Problem Formulation & Exploratory Findings
+##  Problem Formulation & Exploratory Findings
 
 Predicting loan default on uncollateralized credit applications presents acute machine learning challenges: extreme class imbalance (~8% default rate), complex non-linear borrower interactions, and substantial missingness across external bureau records.
->>>>>>> 4c688de (chore: complete repository cleanup and finalize documentation for publication)
+
 
 <div align="center">
   <img src="images/eda/target_distribution.png" width="45%" alt="Target Distribution" />
@@ -58,7 +57,7 @@ Predicting loan default on uncollateralized credit applications presents acute m
 
 ---
 
-## 🛠️ Feature Engineering Architecture
+##  Feature Engineering Architecture
 
 Feature engineering is structured across five core financial and demographic domains:
 
@@ -215,8 +214,7 @@ jupyter notebook notebooks/final_solution.ipynb
 <<<<<<< HEAD
 ## Competition Rules & Ethical Compliance
 =======
-## 📜 Competition Rules & Integrity Standards
->>>>>>> 4c688de (chore: complete repository cleanup and finalize documentation for publication)
+##  Competition Rules & Integrity Standards
 
 This project was developed strictly under the official tournament regulations:
 - **Zero External Data**: Built exclusively on the official competition training and test sets.
