@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🏆 GCI Global 2026: Home Credit Default Risk
+#  GCI Global 2026: Home Credit Default Risk
 ### Advanced Credit Risk Scoring via Tri-Family Gradient Boosting & Non-Linear Solvency Modeling
 
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://www.python.org/)
@@ -13,7 +13,7 @@
 
 ---
 
-## 📌 Executive Summary
+##  Executive Summary
 
 This repository presents the end-to-end machine learning solution for the **GCI Global 2026 In-class Machine Learning Competition: Home Credit Default Risk**. 
 
@@ -25,13 +25,13 @@ Our solution establishes a leak-free pipeline incorporating:
 3. **Tri-Family Gradient Boosting Architecture**: Ensemble of Bayesian-tuned **LightGBM**, symmetric oblivious **CatBoost**, and histogram-based **XGBoost**.
 4. **Rank-Weighted Power Calibration ($p=3.5$)**: Resolving inter-model probability calibration disparities to optimize rank discrimination.
 
-### 🌟 Verified Benchmark Performance
+###  Verified Benchmark Performance
 - **Tri-Family Pooled Out-of-Fold (OOF) ROC-AUC:** `0.76805`
 - **Omnicampus Public Leaderboard Verified Record:** `0.77148`
 
 ---
 
-## 📊 Exploratory Data Analysis & Key Findings
+##  Exploratory Data Analysis & Key Findings
 
 <div align="center">
   <img src="images/eda/target_distribution.png" width="45%" alt="Target Distribution" />
@@ -61,7 +61,7 @@ Feature engineering is organized across five distinct financial and demographic 
 
 ---
 
-## 🧠 Model Architecture & Methodology
+##  Model Architecture & Methodology
 
 ```text
                                   ┌────────────────────────┐
@@ -98,7 +98,7 @@ Feature engineering is organized across five distinct financial and demographic 
 
 ---
 
-## 📈 Validation Strategy & Results
+##  Validation Strategy & Results
 
 Validation is conducted strictly through **5-Fold Stratified Cross-Validation (`StratifiedKFold(n_splits=5, shuffle=True)`)**. All transformations and early-stopping decisions are executed within training partitions to eliminate target and feature leakage.
 
@@ -121,7 +121,7 @@ Validation is conducted strictly through **5-Fold Stratified Cross-Validation (`
 
 ---
 
-## 🗂️ Repository Structure
+##  Repository Structure
 
 ```text
 GCI-World-2026/
@@ -155,7 +155,7 @@ GCI-World-2026/
 
 ---
 
-## 🚀 Quickstart & Reproducibility Guide
+## Quickstart & Reproducibility Guide
 
 ### 1. Environment Setup
 Clone this repository and create a Python 3.10+ virtual environment:
@@ -193,7 +193,7 @@ jupyter notebook notebooks/final_solution.ipynb
 
 ---
 
-## 📜 Competition Rules & Ethical Compliance
+## Competition Rules & Ethical Compliance
 
 This project strictly adheres to the **GCI Global 2026 Official Tournament Regulations**:
 - **Zero External Data**: Built exclusively using official `train.csv` and `test.csv`.
@@ -205,7 +205,7 @@ For complete regulatory details, consult [`docs/competition_rules.md`](docs/comp
 
 ---
 
-## 📚 Acknowledgements & References
+##  Acknowledgements & References
 
 1. **Home Credit Group & Kaggle**: Original 2018 Home Credit Default Risk benchmark dataset [[Kaggle Link](https://www.kaggle.com/c/home-credit-default-risk)].
 2. **GCI Global 2026 Course Staff & TAs**: Office hours, tutorials, and materials:
