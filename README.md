@@ -13,24 +13,20 @@
 
 ---
 
-<<<<<<< HEAD
 ##  Executive Summary
-=======
 ## Competition Overview & Context
 
 This repository contains the complete, verified, and reproducible machine learning solution and benchmark codebase developed for the **GCI Global 2026 Home Credit Default Risk Competition** (now concluded).
 
 The competition challenged participants to predict loan default probabilities using real-world tabular financial, demographic, and external credit agency data adapted from the landmark Kaggle Home Credit Default Risk tournament. The repository is maintained as an open-source technical reference for high-performance tabular credit risk modeling, rigorous leakage-free feature engineering, and multi-family gradient boosting ensembling.
 
-<<<<<<< HEAD
+
 Our solution establishes a leak-free pipeline incorporating:
 1. **Domain-Engineered Financial Health & Solvency Features**: Uncovered credit ratios, net family disposable cushions, and harmonic external agency aggregations.
 2. **Unsupervised Gaussian Mixture Loan Term Segmentation**: Continuous log-term cluster assignments capturing differing repayment dynamics.
 3. **Tri-Family Gradient Boosting Architecture**: Ensemble of Bayesian-tuned **LightGBM**, symmetric oblivious **CatBoost**, and histogram-based **XGBoost**.
 4. **Rank-Weighted Power Calibration ($p=3.5$)**: Resolving inter-model probability calibration disparities to optimize rank discrimination.
 
-###  Verified Benchmark Performance
-=======
 ###  Verified Benchmark Results
 
 - **Tri-Family Pooled Out-of-Fold (OOF) ROC-AUC:** `0.76805`
@@ -38,9 +34,6 @@ Our solution establishes a leak-free pipeline incorporating:
 
 ---
 
-<<<<<<< HEAD
-##  Exploratory Data Analysis & Key Findings
-=======
 ##  Problem Formulation & Exploratory Findings
 
 Predicting loan default on uncollateralized credit applications presents acute machine learning challenges: extreme class imbalance (~8% default rate), complex non-linear borrower interactions, and substantial missingness across external bureau records.
@@ -211,9 +204,6 @@ jupyter notebook notebooks/final_solution.ipynb
 
 ---
 
-<<<<<<< HEAD
-## Competition Rules & Ethical Compliance
-=======
 ##  Competition Rules & Integrity Standards
 
 This project was developed strictly under the official tournament regulations:
@@ -229,3 +219,4 @@ For complete historical regulatory specifications, see [`docs/competition_rules.
 
 1. **Home Credit Group & Kaggle**: Home Credit Default Risk benchmark dataset [[Kaggle Link](https://www.kaggle.com/c/home-credit-default-risk)].
 2. **Open-Source Machine Learning Libraries**: [LightGBM](https://github.com/microsoft/LightGBM), [CatBoost](https://github.com/catboost/catboost), [XGBoost](https://github.com/dmlc/xgboost), and [Scikit-Learn](https://scikit-learn.org/).
+connect:https://www.linkedin.com/in/karina-b-a022311b1x
