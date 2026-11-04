@@ -22,19 +22,37 @@ ENV/
 .Spotlight-V100
 .Trashes
 
-# Official Competition Datasets (Protected by Rules)
+# Secrets, API keys & environment configs
+.env
+.env.*
+*.pem
+*.key
+*.token
+*.credentials
+credentials.json
+
+# Official Competition Datasets & Archives
 input/
 data/*.csv
 data/*.xlsx
+data/*.parquet
+*.parquet
+*.feather
+*.h5
+*.hdf5
 *.csv.gz
 *.zip
+*.tar.gz
+*.tgz
 _archive_raw_competition_materials/
 _backup_experiments/
 
-# Preserve template submission instructions in data/
-!data/README.md
-
-# Large Experiment Checkpoints & Intermediate Caches
+# Temporary files, caches & backups
+*.tmp
+*.bak
+*.swp
+*.swo
+*~
 catboost_info/
 experiments/
 *.npy
@@ -43,7 +61,13 @@ experiments/
 *.model
 *.log
 
-# Keep final outputs directory tracked
+# Deleted starter/tutorial notebooks
+tutorial.ipynb
+README.ipynb
+
+# Whitelist tracked metadata and documentation
+!data/README.md
+!HomeCredit_columns_description.xlsx
 !outputs/
 !outputs/submission.csv
 !outputs/cv_results.csv
